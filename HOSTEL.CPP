@@ -1,5 +1,4 @@
 
-//REQUIRED CONSTANT DECLARATIONS
 const int SINGLE	= 101;
 const int DOUBLE	= 102;
 const int SHADOW	= 103;
@@ -11,7 +10,6 @@ const int FALSE		= 108;
 const int YES		= 109;
 const int NO		= 110;
 
-//REQUIRED STANDARD LIBRARIES
 #include <dir.h>
 #include <dos.h>
 #include <stdio.h>
@@ -21,7 +19,6 @@ const int NO		= 110;
 #include <iostream.h>
 #include <fstream.h>
 
-//REQUIRED STRUCTURE DEFINITIONS
 struct member
 {
 	char name[ 50 ];
@@ -62,62 +59,50 @@ struct room
         int  year;
 } temp_room;
 
-//REQUIRED GLOBAL VARIABLES
 char expenses_file[ 50 ];
 
-//REQUIRED FUNCTION PROTOTYPES
 
-//FUNCTIONS FOR MANIPULATING MENU SYSTEM
 void main_menu( void );
 int  reports_menu( void );
 int  sub_menu( int row );
 
-//FUNCTIONS FOR DISPLAYING REPORTS
 void members_report( void );
 void expenses_report( void );
 void bills_report( void );
 void rooms_report( void );
 
-//FUNCTIONS FOR COUNTING RECORDS
 int count_member_records( void );
 int count_expenses_records( void );
 int count_bills_records( void );
 int count_room_records( void );
 
-//FUNCTIONS FOR FINDING RECORDS
 int find_member_record( int record_no );
 int find_expenses_record( int record_no );
 int find_bills_record( int record_no );
 int find_room_record( int record_no );
 
-//FUNCTIONS FOR WRITING RECORDS
 void write_member_record_to_file( void );
 void write_expenses_record_to_file( void );
 void write_bill_record_to_file( void );
 void write_room_record_to_file( void );
 
-//FUNCTIONS FOR REMOVING RECORDS
 void remove_member_record( int recod_no );
 void remove_expenses_record( int record_no );
 void remove_bills_record( int record_no );
 void remove_room_record( int record_no );
 
-//FUNCTIONS FOR MODIFYING RECORDS
 void modify_member_record( int record_no );
 void modify_expenses_record( int record_no );
 void modify_bills_record( int record_no );
 void modify_room_record( int record_no );
 
-//DATA TYPE CONVERSION FUNCTIONS
 char * float_to_string( float value );
 int    string_to_float( char * string , float * value );
 int    string_to_int( char * string , int * value );
 
-//FUNCTIONS FOR WRITING AND READING BACK SETTINGS
 void write_settings_to_file( char * file_name );
 void load_settings( void );
 
-//DIALOG BOXES
 void msgbox( char * title , char * message , int page );
 int  yes_no( char * message );
 
@@ -134,13 +119,11 @@ int read_room_record_dialog_box( int * record_no );
 void settings_dialog_box( void );
 int  ask_filename_dialog_box( char  * file );
 
-//FUNCTIONS FOR WRITING REPORTS TO FILES
 void write_members_report_to_file( char * file );
 void write_bills_report_to_file( char * file );
 void write_expenses_report_to_file( char * file );
 void write_rooms_report_to_file( char * file );
 
-//COMMON FUNCTIONS
 void draw_border( int x1 , int y1 , int x2 , int y2 , int type , int fore_ground_color , int back_ground_color , int shadow , int page );
 void draw_line( int type , int row , int from , int to , int fore_ground_color , int back_ground_color , int page );
 void fill_screen( int x1 , int y1 , int x2 , int y2 , int color , int page );
@@ -159,13 +142,10 @@ int  find_color_attribute( int fore_ground_color , int back_ground_color );
 int  is_filename_valid( char * filename );
 int  is_chronological( date first, date second );
 
-//FUNCTIONS FOR FINDING TOTAL AND BALANCE AMOUNTS
 float find_balance_amount( void );
 float find_total_amount( void );
 
-//REQUIRED CLASS DEFINITIONS
 
-// THE KEY CLASS ( TO READ KEY STROKES )
 
 class key
 {
@@ -222,7 +202,6 @@ void key :: read_key_stroke( void )
 	}
 }
 
-// THE TEXTBOX CLASS
 
 class text_box
 {
@@ -566,7 +545,6 @@ void text_box :: draw_textbox( int color ,int back_ground_color )
 	}
 }
 
-//THE DATE CLASS
 
 class Date
 {
@@ -825,7 +803,6 @@ void Date :: display_error_message( void )
 	}
 }
 
-//FUNCTIONS FOR WRITING REPORTS TO FILES
 
 void write_members_report_to_file( char * filename )
 {
@@ -1057,7 +1034,6 @@ void write_bills_report_to_file( char * filename )
         out_file.close();
 }
 
-// DEFINITIONS OF COMMON FUNCTIONS
 
 void draw_border( int x1 , int y1 , int x2 , int y2 , int type , int fore_ground_color , int back_ground_color , int shadow , int page )
 {
@@ -1810,7 +1786,6 @@ int add_member_record_dialog_box( int load_values )
 			my_key.read_key_stroke();
 		}
 
-                //shift tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
                 	prev_tab = tab_counter;
@@ -2008,7 +1983,6 @@ int read_member_record_dialog_box( int * record_no )
 			my_key.read_key_stroke();
 		}
 
-                //Shift + Tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
                 	switch( tab_counter )
@@ -2604,7 +2578,6 @@ int add_bill_record_dialog_box( int load_values )
 			my_key.read_key_stroke();
 		}
 
-                //Shift + Tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
                         prev_tab = tab_counter;
@@ -2998,7 +2971,6 @@ int add_room_record_dialog_box( int load_values )
 			my_key.read_key_stroke();
 		}
 
-                //Shift + Tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
                         prev_tab = tab_counter;
@@ -3322,7 +3294,6 @@ void settings_dialog_box( void )
 			my_key.read_key_stroke();
 		}
 
-                //Shift + Tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
 			if( tab_counter == 0 )
@@ -3444,7 +3415,6 @@ int ask_filename_dialog_box( char * file )
 			my_key.read_key_stroke();
 		}
 
-                //Shift + Tab
 		if( my_key.get_ascii_code() == 0 && my_key.get_scan_code() == 15 )
 		{
 			if( tab_counter == 0 )
@@ -3505,7 +3475,6 @@ int ask_filename_dialog_box( char * file )
         return ( result );
 }
 
-//FUNCTIONS FOR MODIFYING RECORDS
 
 void modify_member_record( int record_no )
 {
@@ -3539,7 +3508,6 @@ void modify_room_record( int record_no )
         write_room_record_to_file();
 }
 
-//REQUIRED DATATYPE CONVERSION FUNCTIONS
 
 char * float_to_string( float value )
 {
@@ -3630,7 +3598,6 @@ int string_to_int( char * string , int * value )
         return ( 1 );
 }
 
-//REQUIRED MENU MANIPULATIONS
 
 void main_menu( void )
 {
@@ -4188,7 +4155,6 @@ int sub_menu( int row )
         return ( result );
 }
 
-//REQUIRED REPORTS
 
 void expenses_report( void )
 {
@@ -5148,7 +5114,6 @@ void members_report( void )
         change_active_video_page( 0 );
 }
 
-//FUNCTIONS FOR COUNTING RECORDS
 
 int count_member_records( void )
 {
@@ -5220,7 +5185,6 @@ int count_room_records( void )
         return ( count );
 }
 
-//FUNCTIONS FOR FINDING RECORDS
 
 int find_member_record( int record_no )
 {
@@ -5319,7 +5283,6 @@ int find_room_record( int record_no )
         return ( result );
 }
 
-//FUNCTIONS FOR WRITING RECORDS
 
 void write_member_record_to_file( void )
 {
@@ -5513,7 +5476,6 @@ void write_room_record_to_file( void )
         rename( "TEMP.DAT" , "ROOMS.DAT" );
 }
 
-//FUNCTIONS FOR REMOVING RECORDS
 
 void remove_member_record( int record_no )
 {
@@ -5631,7 +5593,6 @@ void remove_room_record( int record_no )
         rename( "TEMP.DAT" , "ROOMS.DAT" );
 }
 
-//FUNCTIONS FOR WRITING AND READING BACK SETTINGS
 
 void write_settings_to_file( char * file_name )
 {
@@ -5653,7 +5614,6 @@ void load_settings( void )
         file.close();
 }
 
-//FUNCTIONS FOR FINDING TOTAL AND BALANCE AMOUNTS
 
 float find_total_amount( void )
 {
@@ -5693,7 +5653,6 @@ float find_balance_amount( void )
         return ( balance );
 }
 
-//THE MAIN FUNCTION
 
 int main(void)
 {
